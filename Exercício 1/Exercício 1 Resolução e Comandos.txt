@@ -1,0 +1,86 @@
+create database ex1
+default character set utf8
+default collate utf8_general_ci;
+create table Veiculo(
+idVeiculo int not null auto_increment,
+placa varchar (45),
+modelo varchar(45),
+fabricante varchar(45),
+combustivel varchar(45),
+ano int,
+valor float,
+quilometragem float,
+primary key (idVeiculo)
+)default charset=utf8;
+# Exercício 1 (Criação da tabela)
+
+insert into Veiculo values
+(DEFAULT,'KAI0976','Gol','Volkswagem','Gasolina','2020','51250','25000'),
+(DEFAULT,'HQW9118','Uno','Fiat','Gasolina Aditivada','2018','45890','100000'),
+(DEFAULT,'MOR1275','Palio','Fiat','Galosina Premium','2014','45240','30000'),
+(DEFAULT,'HEH3645','Fox/Crossfox','Volkswagen','Etanol','2013','54060','12000'),
+(DEFAULT,'JYU7760','Siena','Fiat','Etanol','2000','47990','0'),
+(DEFAULT,'JWA5543','Celta','General Motors','Etanol Aditivado','1800','15500','350000'),
+(DEFAULT,'MNH5857','Voyage','Volkswagen','Diesel','1748','59750','10000'),
+(DEFAULT,'HZY0257','HB20','Hyundai','GNV','2013','47990','5000'),
+(DEFAULT,'LWN5115','Corsa Sedan','General Motors','Etanol','2012','12500','50'),
+(DEFAULT,'MYB6737','Onix','General Motors','GNV','2011','52150','230000'),
+(DEFAULT,'NEW8578','Sandero','Renault','Gasolina','1983','52690','38000'),
+(DEFAULT,'MRG4481','Fiesta','Ford','Gasolina Premium','2001','47168','120000'),
+(DEFAULT,'JHP6996','Cobalt','General Motors','Gasolina Aditivada','2002','64990','100000'),
+(DEFAULT,'JHV4534','Ka','Ford','Diesel','2003','49890','31520'),
+(DEFAULT,'MYX7307','Corolla','Toyota','Etanol','2004','107990','32100'),
+(DEFAULT,'HOQ3765','Civic','Honda','Etanol Aditivado','2005','97900','10000'),
+(DEFAULT,'HOQ8817','Punto','Fiat','GNV','2006','19900','1000'),
+(DEFAULT,'NEQ1947','Fit','Honda','GNV','2007','64100','10'),
+(DEFAULT,'NEM1250','Spin','General Motors','Diesel','2077','69990','350'),
+(DEFAULT,'JVK4300','C3','Citroën','Gasolina Premium','2020','62090','20000');
+/* Exercício 2 (Inserçao de dados)
+
+A partir daqui começa o exercício 3 */
+
+select * from veiculo;
+#Letra a
+
+select fabricante,modelo,ano from veiculo
+where ano >=2000
+order by ano;
+#Letra b
+
+select modelo,combustivel,valor from veiculo
+where combustivel='Gasolina'
+order by valor;
+#Letra c
+
+select fabricante,modelo,ano,valor from veiculo
+where valor between '15000' and '25000'
+order by valor desc;
+#Letra d
+
+select placa,quilometragem,modelo from veiculo
+where quilometragem <'30000'
+order by quilometragem;
+#Letra e
+
+select modelo,combustivel from veiculo
+where combustivel='Gasolina' or combustivel='Etanol'
+order by combustivel;
+#Letra f 
+
+select modelo from veiculo
+where combustivel='Diesel' and Fabricante='Fiat'
+order by modelo;
+#Letra g
+#Fim do exercício de número 3
+
+update Veiculo
+set valor=51252
+where modelo='Gol'
+limit 1;
+#Exercício 4
+
+delete from Veiculo
+where modelo='Gol'
+limit 1;
+/* Exercício 5 
+   Esse eu não testei por medo, mas sei que está funcionando.*/
